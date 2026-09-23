@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>My Website List — Crepank</title>
+    <link rel="icon" href="https://avatars.githubusercontent.com/u/153304989" />
+    <meta name="description" content="My website list." />
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="stylesheet" href="https://github.com/Crepank/Crepank.github.io/raw/refs/heads/main/Shag%20Lounge.otf" />
+  </head>
+  <body>
+    <header>
+      <div>
+        <h1>Hello World!</h1>
+        <p class="subtitle">This is my website list.</p>
+      </div>
+      <div class="actions">
+        <button id="theme-toggle" title="Toggle dark mode">🌙</button>
+      </div>
+    </header>
+
+    <main>
+      <ul class="site-list">
+        <li>
+          <a href="https://emoji-fanon.fandom.com/" target="_blank" rel="noopener noreferrer">Emoji Fanon Wiki (Not Mine)</a>
+          <button class="copy-btn" data-url="https://emoji-fanon.fandom.com/">Copy link</button>
+        </li>
+      <p class="note">New websites coming soon! I mean… right?</p>
+    </main>
+
+    <div class="toast" id="toast">Link copied!</div>
+
+    <script>
+      const toggle = document.getElementById('theme-toggle');
+      toggle.addEventListener('click', () => {
+        document.body.classList.toggle('dark');
+        toggle.textContent = document.body.classList.contains('dark') ? '☀️' : '🌙';
+      });
+
+      const toast = document.getElementById('toast');
+      document.querySelectorAll('.copy-btn').forEach(btn => {
+        btn.addEventListener('click', () => {
+          navigator.clipboard.writeText(btn.dataset.url).then(() => {
+            toast.classList.add('show');
+            setTimeout(() => toast.classList.remove('show'), 1800);
+          });
+        });
+      });
+    </script>
+  </body>
+</html>
